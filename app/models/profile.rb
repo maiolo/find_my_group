@@ -4,7 +4,7 @@ class Profile < ApplicationRecord
   validates :nickname, presence: true, uniqueness: true, length: {minimun: 3, maximum: 15}
   validates :first_name, presence: true, length: {minimun: 3, maximum: 50}
   validates :last_name, presence: true, length: {minimun: 3, maximum: 50}
-  validates :description, length: {minimun: 5}
+  validates :description, length: {minimun: 5, maximum: 2000}
   validates :gender, presence:true, inclusion: { in:
     [
       'Feminino', 

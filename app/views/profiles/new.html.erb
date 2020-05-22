@@ -1,0 +1,31 @@
+<h4> Por favor, complete seu cadastro </h4>
+<%= simple_form_for (@profile) do |f| %>
+  <%= f.input :nickname, label:'Escolha como quer ser chamado' %>
+  <%= f.input :first_name, label: 'Seu Nome' %>
+  <%= f.input :last_name, label: 'Seu Sobrenome' %>
+  <%= f.input :gender, label: "qual seu genero?", collection: [
+      'Feminino', 
+      'Masculino',
+      'Trans homem',
+      'Trans mulher',
+      'Travesti',
+      'Transgênero',
+      'Homem transexual',
+      'Pessoa trans',
+      'Mulher transexual',
+      'Pessoa transexual',
+      'Mulher (trans)',
+      'Homem (trans)',
+      'Neutro',
+      'Sem gênero',
+      'Cross gender',
+      'Mtf (homem que está em transição para o gênero feminino)',
+      'Ftm (mulher que está em transição para o gênero masculino)'
+    ], as: :radio_buttons, class: "customRadio1"%>
+  <%= f.input :favorite_role, label: "Como prefere jogar?", collection: ['Narrador', 'Jogador' ], as: :radio_buttons %>
+  <%= f.input :country, label: "Seu país" %>
+  <%= f.input :state, label: "Estado" %>
+  <%= f.input :city, label: "Cidade" %>
+  <%= f.input :description, label: 'Fale um pouco sobre você', as: :text%>
+  <%= f.submit 'Enviar dados', class: 'btn btn-danger btn-block'%>
+<% end %>
