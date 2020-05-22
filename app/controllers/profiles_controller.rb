@@ -30,14 +30,12 @@ class ProfilesController < ApplicationController
 
   def destroy
     @profile.destroy
-
-    redirect_to root_path
   end
 
   private
 
   def set_profile
-    @profile = Profile.find(params(:id))
+    @profile = Profile.find(params[:id])
   end
 
   def profile_params
