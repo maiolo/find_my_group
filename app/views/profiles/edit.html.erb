@@ -1,8 +1,7 @@
 <div class = 'container'>
-  <div class = 'col-12'>
+  <div class = col-12>
     <h4> Por favor, complete seu cadastro </h4>
     <%= simple_form_for (@profile) do |f| %>
-      <%= f.input :nickname, label:'Escolha como quer ser chamado' %>
       <%= f.input :first_name, label: 'Seu Nome' %>
       <%= f.input :last_name, label: 'Seu Sobrenome' %>
       <%= f.input :gender, label: "qual seu genero?", collection: [

@@ -10,7 +10,7 @@ class CreateProfiles < ActiveRecord::Migration[6.0]
       t.string :country
       t.string :state
       t.string :city
-      t.references :user, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true, index: { unique: true }
 
       t.timestamps
     end
