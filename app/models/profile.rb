@@ -1,5 +1,6 @@
 class Profile < ApplicationRecord
   belongs_to :user, dependent: :destroy
+  has_many :user_answers, dependent: :destroy
 
   validates :nickname, presence: true, uniqueness: true, length: {minimun: 3, maximum: 15}
   validates :first_name, presence: true, length: {minimun: 3, maximum: 50}
