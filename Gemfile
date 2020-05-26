@@ -19,6 +19,9 @@ gem 'pundit'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'guard'
+  gem 'guard-livereload', '~> 2.5', require: false
+  gem "rack-livereload"
 end
 
 group :development, :test do
