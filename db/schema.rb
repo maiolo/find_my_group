@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_19_233529) do
+ActiveRecord::Schema.define(version: 2020_05_23_172203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.string "description", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string "nickname", null: false
@@ -29,6 +37,23 @@ ActiveRecord::Schema.define(version: 2020_05_19_233529) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_profiles_on_user_id", unique: true
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text "description", null: false
+    t.integer "score", default: 0, null: false
+    t.boolean "key_question", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_answers", force: :cascade do |t|
+    t.bigint "answer_id", null: false
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["answer_id"], name: "index_user_answers_on_answer_id"
+    t.index ["profile_id"], name: "index_user_answers_on_profile_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,5 +72,8 @@ ActiveRecord::Schema.define(version: 2020_05_19_233529) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "answers", "questions"
   add_foreign_key "profiles", "users"
+  add_foreign_key "user_answers", "answers"
+  add_foreign_key "user_answers", "profiles"
 end
