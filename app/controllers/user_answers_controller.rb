@@ -4,7 +4,6 @@ class UserAnswersController < ApplicationController
     @user_answer = UserAnswer.new(user_answer_params)
     @user_answer.profile = current_user.profile
     @user_answer.save
-    raise
     redirect_to questions_path
   end
 
