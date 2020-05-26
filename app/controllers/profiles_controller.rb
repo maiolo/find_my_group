@@ -2,17 +2,19 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   def index
-    @profiles = Profile.all
+    @profiles = policy_scope(Profile)
   end
 
   def new
     @profile = Profile.new
     @user = current_user
+    authorize @profile
   end
 
   def create
     @profile = Profile.new(profile_params)
     @profile.user = current_user
+    authorize @profile
     if @profile.save
       redirect_to profile_path(@profile)
     else
@@ -44,6 +46,7 @@ class ProfilesController < ApplicationController
 
   def set_profile
     @profile = Profile.find(params[:id])
+    authorize @profile
   end
 
   def profile_params
