@@ -1,6 +1,10 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
+  def index
+    @profiles = Profile.all
+  end
+
   def new
     @profile = Profile.new
     @user = current_user
@@ -14,6 +18,10 @@ class ProfilesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    set_profile
   end
 
   def edit
