@@ -22,6 +22,10 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def show
+    set_profile
+  end
+
   def edit
   end
 

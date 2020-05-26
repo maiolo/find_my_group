@@ -2,7 +2,7 @@
   <div class="container">
     <h1>Find My Group!</h1>
     <p>Encontre seus parceiros de RPG</p>
-    <a class="btn btn-flat" href="#">Vem jogar</a>
+    <%= link_to "Vem jogar!", new_user_session_path, class: "btn btn-flat" %>
   </div>
 </div>
 
@@ -14,30 +14,30 @@
     <div class="card-trip">
       <%=image_tag("card-1.jpg")%>
         <div class="card-trip-infos">
-            <div>
-              <h2>Grupo</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet saepe, repellat dolorem repellendus, aliquid itaque. Delectus pariatur neque, blanditiis, quas dolor tenetur officiis impedit est beatae eveniet iste! Sit, blanditiis!</p>
-            </div>
+          <div>
+            <h2><%= link_to "Grupo", profiles_path%></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet saepe, repellat dolorem repellendus, aliquid itaque. Delectus pariatur neque, blanditiis, quas dolor tenetur officiis impedit est beatae eveniet iste! Sit, blanditiis!</p>
+          </div>
         </div>
     </div>
 
     <div class="card-trip">
       <%=image_tag("card-2.png")%>
         <div class="card-trip-infos">
-            <div>
-              <h2>Grupo</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet saepe, repellat dolorem repellendus, aliquid itaque. Delectus pariatur neque, blanditiis, quas dolor tenetur officiis impedit est beatae eveniet iste! Sit, blanditiis!</p>
-            </div>
+          <div>
+            <h2><%= link_to "Grupo", profiles_path%></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet saepe, repellat dolorem repellendus, aliquid itaque. Delectus pariatur neque, blanditiis, quas dolor tenetur officiis impedit est beatae eveniet iste! Sit, blanditiis!</p>
+          </div>
         </div>
     </div>
 
     <div class="card-trip">
       <%=image_tag("card-3.jpg")%>
         <div class="card-trip-infos">
-            <div>
-              <h2>Grupo</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet saepe, repellat dolorem repellendus, aliquid itaque. Delectus pariatur neque, blanditiis, quas dolor tenetur officiis impedit est beatae eveniet iste! Sit, blanditiis!</p>
-            </div>
+          <div>
+            <h2><%= link_to "Grupo", profiles_path%></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet saepe, repellat dolorem repellendus, aliquid itaque. Delectus pariatur neque, blanditiis, quas dolor tenetur officiis impedit est beatae eveniet iste! Sit, blanditiis!</p>
+          </div>
         </div>
     </div>
 
