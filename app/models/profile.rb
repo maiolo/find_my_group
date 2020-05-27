@@ -1,6 +1,7 @@
 class Profile < ApplicationRecord
   belongs_to :user, dependent: :destroy
   has_many :user_answers, dependent: :destroy
+  has_one_attached :photo
 
   validates :nickname, presence: true, uniqueness: true, length: {minimun: 3, maximum: 15}
   validates :first_name, presence: true, length: {minimun: 3, maximum: 50}
@@ -8,7 +9,7 @@ class Profile < ApplicationRecord
   validates :description, length: {minimun: 5, maximum: 2000}
   validates :gender, presence:true, inclusion: { in:
     [
-      'Feminino', 
+      'Feminino',
       'Masculino',
       'Trans homem',
       'Trans mulher',
