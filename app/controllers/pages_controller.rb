@@ -17,7 +17,9 @@ class PagesController < ApplicationController
         answered_questions << ua.answer.question
       end
       @question = (questions - answered_questions).shuffle.first
-      @answers = @question.answers
+      unless @question.nil?
+        @answers = @question.answers
+      end
     end
   end
 end
