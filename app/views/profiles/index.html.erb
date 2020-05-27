@@ -1,3 +1,6 @@
 <% @profiles.each do |profile| %>
-<h3><%= link_to profile.nickname, profile_path(profile)%></h3>
+
+  <h3><%= link_to profile.nickname, profile_path(profile)%></h3>
+  <%= cl_image_tag profile.photo.key, height: 150, width: 200, crop: :fill %>
+
 <%end%>
