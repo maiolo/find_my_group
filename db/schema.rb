@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_004449) do
+ActiveRecord::Schema.define(version: 2020_05_28_232021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,22 @@ ActiveRecord::Schema.define(version: 2020_05_27_004449) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "group_members", force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_group_members_on_group_id"
+    t.index ["profile_id"], name: "index_group_members_on_profile_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.bigint "master_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["master_id"], name: "index_groups_on_master_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -77,6 +93,16 @@ ActiveRecord::Schema.define(version: 2020_05_27_004449) do
     t.index ["profile_id"], name: "index_user_answers_on_profile_id"
   end
 
+  create_table "user_interactions", force: :cascade do |t|
+    t.bigint "current_user_id", null: false
+    t.boolean "liked", null: false
+    t.bigint "another_user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["another_user_id"], name: "index_user_interactions_on_another_user_id"
+    t.index ["current_user_id"], name: "index_user_interactions_on_current_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -95,7 +121,12 @@ ActiveRecord::Schema.define(version: 2020_05_27_004449) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "questions"
+  add_foreign_key "group_members", "groups"
+  add_foreign_key "group_members", "profiles"
+  add_foreign_key "groups", "profiles", column: "master_id"
   add_foreign_key "profiles", "users"
   add_foreign_key "user_answers", "answers"
   add_foreign_key "user_answers", "profiles"
+  add_foreign_key "user_interactions", "profiles", column: "another_user_id"
+  add_foreign_key "user_interactions", "profiles", column: "current_user_id"
 end
