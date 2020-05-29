@@ -6,7 +6,7 @@ class ProfilePolicy < ApplicationPolicy
   end
 
   def create?
-      true
+    true
   end
 
   def show?
