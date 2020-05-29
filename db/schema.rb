@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_05_28_232021) do
   end
 
   create_table "groups", force: :cascade do |t|
-    t.bigint "master_id", null: false
+    t.bigint "master_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["master_id"], name: "index_groups_on_master_id"
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2020_05_28_232021) do
 
   create_table "user_interactions", force: :cascade do |t|
     t.bigint "current_user_id", null: false
-    t.boolean "liked"
+    t.boolean "liked", null: false
     t.bigint "another_user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
