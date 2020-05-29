@@ -1,6 +1,8 @@
 class Profile < ApplicationRecord
   belongs_to :user, dependent: :destroy
   has_many :user_answers, dependent: :destroy
+  has_many :user_interactions, dependent: :destroy, foreign_key: :current_user_id
+  has_many :user_interactions, dependent: :destroy, foreign_key: :another_user_id
   has_one_attached :photo
 
   validates :nickname, presence: true, uniqueness: true, length: {minimun: 3, maximum: 15}

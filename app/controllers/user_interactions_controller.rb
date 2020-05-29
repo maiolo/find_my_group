@@ -3,9 +3,10 @@ class UserInteractionsController < ApplicationController
   def create
     @user_interaction = UserInteraction.new(user_interaction_params)
     @user_interaction.current_user = current_user.profile
+    authorize @user_interaction
     @user_interaction.save
     unless its_a_match?(@user_interaction.current_user, @user_interaction.another_user)
-      redirect_to :back
+      redirect_to request.referrer
     else 
       groups_p1 = GroupMember.where(profile: @user_interaction.current_user)
       groups_p2 = GroupMember.where(profile: @user_interaction.another_user)
@@ -24,19 +25,8 @@ class UserInteractionsController < ApplicationController
           end
         end
       end
-      # match_counter = 1
-      # groups_p1.each do |group|
-      #   group.group.group_members.each do |member|
-      #     next if member.profile = current_user.profile
-      #     if its_a_match?(member.profile, @user_interaction.another_user)
-      #       match_counter += 1
-      #     end
-      #   end
-      #   if match_counter > (group.group_members.count / 2)
-      #     GroupMember.create(profile: @user_interaction.another_user, group: group)
-      #   end
-      #   match_counter = 1
-      # end
+    end
+    redirect_to request.referrer
   end
 
   private
@@ -75,6 +65,7 @@ class UserInteractionsController < ApplicationController
         end
       elsif g.group.master.nil?
         g.group.master = profile2
+        associated = GroupMember.create(profile: profile2, group: g.group)
       end
       match_counter = 1
     end
@@ -82,12 +73,13 @@ class UserInteractionsController < ApplicationController
   end
 
   def its_a_match?(profile1, profile2)
-    interactions = UserInteraction.where("current_user in (?, ?) AND another_user in (?, ?) AND liked = true", profile1, profile2, profile1, profile2)
+    interactions = UserInteraction.where("current_user_id IN (?, ?) AND another_user_id IN (?, ?) AND liked = true", profile1.id, profile2.id, profile1.id, profile2.id)
     interactions.length == 2
   end
 
 
   def user_interaction_params
-    params.require(:user_interaction).permit(:liked, :another_user)
+    params.require(:user_interaction).permit(:liked, :another_user_id)
   end
+
 end

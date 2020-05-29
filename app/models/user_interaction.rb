@@ -1,6 +1,5 @@
 class UserInteraction < ApplicationRecord
-  belongs_to :current_user, dependent: :destroy
-  belongs_to :another_user, dependent: :destroy
+  belongs_to :current_user, class_name: :Profile
+  belongs_to :another_user, class_name: :Profile
 
-  validates :liked, presence: true
 end

@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :user_answers, only: [:create, :update] 
   resources :user_interactions, only: [:create]
   resources :groups, only: [:index, :show, :create, :edit, :destroy] do
-    resources :group_members, only: [:create, :destroy]
+    resources :group_members, only: [:index, :create, :destroy]
   end
 end

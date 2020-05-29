@@ -2,7 +2,8 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   def index
-    @profiles = policy_scope(Profile)
+    @profiles = policy_scope(Profile).where.not(id: current_user.profile.id)
+    @user_interaction = UserInteraction.new
   end
 
   def new
