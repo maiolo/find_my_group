@@ -14,5 +14,4 @@ class UserAnswersController < ApplicationController
     params.require(:user_answer).permit(:answer_id)
   end
 
-
 end
