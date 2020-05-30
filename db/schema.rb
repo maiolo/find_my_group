@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_28_232021) do
+ActiveRecord::Schema.define(version: 2020_05_30_151027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,13 +94,14 @@ ActiveRecord::Schema.define(version: 2020_05_28_232021) do
   end
 
   create_table "user_interactions", force: :cascade do |t|
-    t.bigint "current_user_id", null: false
+    t.bigint "action_user_id", null: false
     t.boolean "liked", null: false
-    t.bigint "another_user_id", null: false
+    t.bigint "target_user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["another_user_id"], name: "index_user_interactions_on_another_user_id"
-    t.index ["current_user_id"], name: "index_user_interactions_on_current_user_id"
+    t.index ["action_user_id", "target_user_id"], name: "index_user_interactions_on_action_user_id_and_target_user_id", unique: true
+    t.index ["action_user_id"], name: "index_user_interactions_on_action_user_id"
+    t.index ["target_user_id"], name: "index_user_interactions_on_target_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -127,6 +128,6 @@ ActiveRecord::Schema.define(version: 2020_05_28_232021) do
   add_foreign_key "profiles", "users"
   add_foreign_key "user_answers", "answers"
   add_foreign_key "user_answers", "profiles"
-  add_foreign_key "user_interactions", "profiles", column: "another_user_id"
-  add_foreign_key "user_interactions", "profiles", column: "current_user_id"
+  add_foreign_key "user_interactions", "profiles", column: "action_user_id"
+  add_foreign_key "user_interactions", "profiles", column: "target_user_id"
 end

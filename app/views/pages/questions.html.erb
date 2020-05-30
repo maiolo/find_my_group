@@ -3,7 +3,7 @@
 <% unless @question.nil? %>
   <%=@question.description%>
   <%= simple_form_for @user_answer do |f| %>
-    <%=f.input :answer_id, collection: @answers.map{ |a| [a.description, a.id] }, as: :radio_buttons%>
+    <%=f.input :answer_id, label: '', collection: @answers.map{ |a| [a.description, a.id] }, as: :radio_buttons%>
     <%=f.submit%>
   <% end %>
 <% else %>

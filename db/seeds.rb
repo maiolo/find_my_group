@@ -10,7 +10,7 @@ puts "cleaning key questions..."
 
 key_questions = Question.where(key_question: true)
 unless key_questions.first.nil?
-  Question.destroy(key_questions)
+  key_questions.destroy_all
 end 
 
 puts "Creating new Questions...."
