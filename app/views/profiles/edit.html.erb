@@ -28,6 +28,7 @@
       <%= f.input :state, label: "Estado" %>
       <%= f.input :city, label: "Cidade" %>
       <%= f.input :description, label: 'Fale um pouco sobre você', as: :text%>
+      <%= f.input :photo, as: :file %>
       <%= f.submit 'Enviar dados', class: 'btn btn-danger btn-block'%>
     <% end %>
   </div>

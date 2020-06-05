@@ -1,3 +1,5 @@
+@import "index";
+
 .btn-flat {
   color: white;
   padding: 8px 24px;
@@ -9,4 +11,36 @@
 .btn-flat:hover {
   background: $dark-green;
   color: white;
+}
+
+.dislike-btn {
+  height: 30px;
+  width: 30px;
+  background-color: $wine-color;
+  color: $light-gray;
+  font-weight: bold;
+  border: none;
+  border-radius: 100%;
+
+
+}
+.dislike-btn:hover {
+  background-color: $darker-red; 
+  transition: 1s;
+}
+
+.like-btn {
+  height: 30px;
+  width: 30px;
+  background-color: $lighter-green;
+  color: $light-gray;
+  font-weight: bold;
+  border: none;
+  border-radius: 100%;
+
+
+}
+.like-btn:hover {
+  background-color: $olive-green; 
+  transition: 1s;
 }
