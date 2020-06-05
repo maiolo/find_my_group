@@ -9,6 +9,7 @@ class PagesController < ApplicationController
     questions = Question.all
     answered_questions = []
     user_answers = current_user.profile.user_answers
+
     if user_answers.length.zero?
       @question = questions.shuffle.first
       @answers = @question.answers
@@ -23,3 +24,4 @@ class PagesController < ApplicationController
     end
   end
 end
+

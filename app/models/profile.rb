@@ -3,6 +3,7 @@ class Profile < ApplicationRecord
   has_many :group_members, dependent: :destroy
   has_many :groups, through: :group_members, dependent: :destroy
   has_many :user_answers, dependent: :destroy
+  has_many :answers, through: :user_answers, dependent: :destroy
   has_many :user_interactions, dependent: :destroy, foreign_key: :action_user_id
   has_many :user_interactions, dependent: :destroy, foreign_key: :target_user_id
   has_one_attached :photo
@@ -33,5 +34,23 @@ class Profile < ApplicationRecord
     ]
   }
   validates :favorite_role, presence: true, inclusion: {in: ['Narrador', 'Jogador' ] }
+
+  def compare_answers(current_user)
+    user_answers = self.user_answers.map do |ua|
+      ua.answer_id
+    end
+
+    q_size = user_answers.count.to_f
+    return "" if q_size == 0
+
+    current_user_answers = current_user.profile.user_answers.map do |ua|
+      ua.answer_id
+    end
+
+    in_commom = (user_answers & current_user_answers).count.to_f
+    return "#{(in_commom/q_size*100).to_i}%"
+  end
+
+
 
 end
