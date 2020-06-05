@@ -29,7 +29,10 @@
       <%= f.input :city, label: "Cidade" %>
       <%= f.input :description, label: 'Fale um pouco sobre você', as: :text%>
       <%= f.input :photo, as: :file %>
-      <%= f.submit 'Enviar dados', class: 'btn btn-danger btn-block'%>
+      <%= f.submit 'Enviar dados', class: 'btn btn-primary btn-block'%>
     <% end %>
+         <%= link_to "Excluir Conta", profile_path(@profile),
+                   method: :delete,
+                   data: { confirm: "Tem certeza de que quer excluir seu perfil?" }, class:"btn btn-danger"%>
   </div>
 </div>

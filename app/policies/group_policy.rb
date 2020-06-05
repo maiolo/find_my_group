@@ -9,4 +9,8 @@ class GroupPolicy < ApplicationPolicy
     true
   end
 
+  def edit?
+    record.master == user.profile
+  end
+
 end
