@@ -9,6 +9,7 @@ class PagesController < ApplicationController
     questions = Question.all
     answered_questions = []
     user_answers = current_user.profile.user_answers
+
     if user_answers.length.zero?
       @question = questions.shuffle.first
       @answers = @question.answers
@@ -27,3 +28,4 @@ class PagesController < ApplicationController
     @profiles = UserInteraction.all.where("target_user_id = ? and liked = true", current_user.profile).map{ |ue| ue.action_user }
   end
 end
+

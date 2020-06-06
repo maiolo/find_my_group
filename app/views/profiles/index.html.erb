@@ -6,5 +6,6 @@
     <% end %>
   <%= button_to 'X', { :controller => "user_interactions", :action => "create", user_interaction: { :liked => false, :target_user_id => profile.id } }, :method=>:post, class: "dislike-btn" %>
   <%= button_to 'O', { :controller => "user_interactions", :action => "create", user_interaction: { :liked => true, :target_user_id => profile.id } }, :method=>:post, class: "like-btn" %>
-  <%end%>
+  <%= profile.compare_answers(current_user) %>
+<%end%>
 <%end%>
