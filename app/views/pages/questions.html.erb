@@ -4,7 +4,7 @@
   <%=@question.description%>
   <%= simple_form_for @user_answer do |f| %>
     <%=f.input :answer_id, label: '', collection: @answers.map{ |a| [a.description, a.id] }, as: :radio_buttons%>
-    <%=f.submit%>
+    <%=f.submit "Enviar Resposta"%>
   <% end %>
 <% else %>
   <h4>Infelizmente não temos mais perguntas </h4>

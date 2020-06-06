@@ -1,17 +1,33 @@
-<% @user_groups.each do |group| %>
-<h1>GRUPO - <%= group.id %></h1>
-<h2>Mestre - <%= group.master.nil? ? "Sem mestre" : group.master&.nickname %> </h2>
-<% if group.master == current_user.profile %>
-  <%= link_to "Editar Grupo", edit_group_path(group), class: "btn btn-primary" %>
-<% end %>
-  <% group.group_members.each do |member|%>
-    <% if member.profile == group.master %>
-      <h3><b> <%= member.profile.nickname %> </h3></b>
-    <% else %>
-      <h3> <%= member.profile.nickname %> </h3>
-    <% end %>
-    <p><%= member.profile.city %> </p>
-  <% end %>
-<% end %>
-
-<%= link_to "Back to Profiles", profiles_path%>
+<div class="container">
+  <div class="col">
+    <% @user_groups.each do |group| %>
+    <div class="group-data">
+      <div class="header">
+        <h1>GRUPO - <%= group.id %></h1>
+        <h2>Mestre - <%= group.master.nil? ? "Sem mestre" : group.master&.nickname %> </h2>
+      </div>
+      <div class="management">
+        <% if group.master == current_user.profile %>
+          <%= link_to "Editar Grupo", edit_group_path(group), class: "btn btn-primary" %>
+        <% end %>
+      </div>
+        <% group.group_members.each do |member|%>
+        <div class="members d-flex">
+          <% if member.profile.photo.attached? %>
+            <%=link_to (cl_image_tag member.profile.photo.key, crop: :fill, class: "avatar"),  profile_path(member.profile) %>
+          <% else %>
+            <%=link_to (image_tag "avatar-placeholder.gif", crop: :fill, class: "avatar"),  profile_path(member.profile) %>
+          <% end %>
+          <% if member.profile == group.master %>
+            <h3><b> <%= link_to member.profile.nickname, profile_path(member.profile) %> </h3></b>
+          <% else %>
+            <h3> <%= link_to member.profile.nickname, profile_path(member.profile) %> </h3>
+          <% end %>
+          <p><%= member.profile.city %> </p>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+    <%= link_to "Back to Profiles", profiles_path%>
+  </div>
+</div>

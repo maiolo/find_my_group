@@ -1,0 +1,19 @@
+.members { 
+  padding: 10px;
+
+  h3 {
+    margin: 0px 10px;
+  }
+
+  p {
+    margin: 0px 10px;
+  }
+
+  .avatar {
+    margin: 0 10px;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

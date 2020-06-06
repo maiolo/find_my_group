@@ -1,11 +1,20 @@
-
-<h1><%=@profile.nickname%></h1>
-<% if @profile.photo.attached? %>
-  <%= cl_image_tag @profile.photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
-<h3><%=@profile.first_name%> <%=@profile.last_name%></h3>
-<p><%= @profile.gender %></p>
-<p><%= @profile.city %></p>
-<p><%= @profile.description %></p>
-<%= link_to "Editar Perfil", edit_profile_path(@profile)%>
-<%= link_to "Back to Profiles", profiles_path%>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+    <h1><%=@profile.nickname%></h1>
+    <% if @profile.photo.attached? %>
+      <%= cl_image_tag @profile.photo.key, height: 300, width: 300, crop: :fill, class: "rounded-circle" %>
+    <% else %>
+      <%= image_tag "avatar-placeholder.gif", height: 300, width: 300, crop: :fill, class: "rounded-circle"  %>
+    <% end %>
+    <h3><%=@profile.first_name%> <%=@profile.last_name%></h3>
+    <p><%= @profile.gender %></p>
+    <p><%= @profile.city %></p>
+    <p><%= @profile.description %></p>
+    <% if current_user.profile == @profile%>
+     <%= link_to "Editar Perfil", edit_profile_path(@profile)%>
+    <% end %>
+    <%= link_to "Back to Profiles", profiles_path%> 
+    </div>
+  </div>
+</div>

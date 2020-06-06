@@ -1,11 +1,26 @@
-<% @profiles.each do |profile| %>
-  <% if UserInteraction.all.where(action_user: current_user).where(target_user: profile).length.zero?%>
-    <h3><%= link_to profile.nickname, profile_path(profile)%></h3>
-    <% if profile.photo.attached? %>
-      <%= cl_image_tag profile.photo.key, height: 150, width: 200, crop: :fill %>
-    <% end %>
-  <%= button_to 'X', { :controller => "user_interactions", :action => "create", user_interaction: { :liked => false, :target_user_id => profile.id } }, :method=>:post, class: "dislike-btn" %>
-  <%= button_to 'O', { :controller => "user_interactions", :action => "create", user_interaction: { :liked => true, :target_user_id => profile.id } }, :method=>:post, class: "like-btn" %>
-  <%= profile.compare_answers(current_user) %>
-<%end%>
-<%end%>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <% @profiles.each do |profile| %>
+      <% if UserInteraction.all.where(action_user: current_user).where(target_user: profile).length.zero?%>
+        <div class="user-card">
+          <div class="title">
+            <h3><%= link_to profile.nickname, profile_path(profile)%></h3>
+            <span class='affinity-score'><%= profile.compare_answers(current_user) %></span>
+          </div>
+          <div class="picture">
+            <% if profile.photo.attached? %>
+              <%=link_to (cl_image_tag profile.photo.key, height: 150, width: 200, crop: :fill),  profile_path(profile) %>
+            <% else %>
+              <%=link_to (image_tag "avatar-placeholder.gif", height: 150, width: 200, crop: :fill),  profile_path(profile) %>
+            <% end %>
+          </div>
+          <p> <%= profile.description %> </p>
+          <div class="interaction">
+            <%= button_to 'X', { :controller => "user_interactions", :action => "create", user_interaction: { :liked => false, :target_user_id => profile.id } }, :method=>:post, class: "dislike-btn" %>
+            <%= button_to 'O', { :controller => "user_interactions", :action => "create", user_interaction: { :liked => true, :target_user_id => profile.id } }, :method=>:post, class: "like-btn" %>
+          </div>
+        </div>
+      <%end%>
+    <%end%>
+  </div>
+</div>
