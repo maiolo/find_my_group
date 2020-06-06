@@ -1,9 +1,16 @@
-<% @groups.each do |group| %>
-<h1>GRUPO</h1>
+<% @user_groups.each do |group| %>
+<h1>GRUPO - <%= group.id %></h1>
+<h2>Mestre - <%= group.master.nickname %> </h2>
+<% if group.master == current_user.profile %>
+  <%= link_to "Editar Grupo", edit_group_path(group), class: "btn btn-primary" %>
+<% end %>
   <% group.group_members.each do |member|%>
-    <h3> <%= member.profile.nickname %> </h3>
-      <p><%= member.profile.city %> </p>
-
+    <% if member.profile == group.master %>
+      <h3><b> <%= member.profile.nickname %> </h3></b>
+    <% else %>
+      <h3> <%= member.profile.nickname %> </h3>
+    <% end %>
+    <p><%= member.profile.city %> </p>
   <% end %>
 <% end %>
 

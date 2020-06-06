@@ -1,0 +1,6 @@
+<%= simple_form_for @group do |f| %>
+  <%= f.input :master, collection: @group.group_members.map{ |member| member.profile.nickname }%>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "voltar a Grupos", groups_path %>
