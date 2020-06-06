@@ -1,3 +1,5 @@
+<h1>Essas Pessoas gostaram de você!</h1>
+
 <% @profiles.each do |profile| %>
   <% if UserInteraction.all.where(action_user: current_user).where(target_user: profile).length.zero?%>
     <h3><%= link_to profile.nickname, profile_path(profile)%></h3>
@@ -6,6 +8,5 @@
     <% end %>
   <%= button_to 'X', { :controller => "user_interactions", :action => "create", user_interaction: { :liked => false, :target_user_id => profile.id } }, :method=>:post, class: "dislike-btn" %>
   <%= button_to 'O', { :controller => "user_interactions", :action => "create", user_interaction: { :liked => true, :target_user_id => profile.id } }, :method=>:post, class: "like-btn" %>
-  <%= profile.compare_answers(current_user) %>
-<%end%>
+  <%end%>
 <%end%>

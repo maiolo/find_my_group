@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get "/questions", to: 'pages#questions'
+  get "/liked_by", to: 'pages#liked_by'
   resources :profiles
   resources :user_answers, only: [:create, :update] 
   resources :user_interactions, only: [:create]

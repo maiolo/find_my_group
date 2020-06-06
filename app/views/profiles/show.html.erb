@@ -1,8 +1,11 @@
 
 <h1><%=@profile.nickname%></h1>
-<%= cl_image_tag @profile.photo.key, height: 300, width: 400, crop: :fill %>
+<% if @profile.photo.attached? %>
+  <%= cl_image_tag @profile.photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
 <h3><%=@profile.first_name%> <%=@profile.last_name%></h3>
 <p><%= @profile.gender %></p>
 <p><%= @profile.city %></p>
 <p><%= @profile.description %></p>
+<%= link_to "Editar Perfil", edit_profile_path(@profile)%>
 <%= link_to "Back to Profiles", profiles_path%>

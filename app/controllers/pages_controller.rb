@@ -23,5 +23,9 @@ class PagesController < ApplicationController
       end
     end
   end
+
+  def liked_by
+    @profiles = UserInteraction.all.where("target_user_id = ? and liked = true", current_user.profile).map{ |ue| ue.action_user }
+  end
 end
 

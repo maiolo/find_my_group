@@ -1,11 +1,12 @@
 class Profile < ApplicationRecord
   belongs_to :user
   has_many :group_members, dependent: :destroy
-  has_many :groups, through: :group_members, dependent: :destroy
+  has_many :groups, through: :group_members
+  has_many :group_as_master, dependent: :nullify, foreign_key: :master_id, class_name: "Group"
   has_many :user_answers, dependent: :destroy
   has_many :answers, through: :user_answers, dependent: :destroy
-  has_many :user_interactions, dependent: :destroy, foreign_key: :action_user_id
-  has_many :user_interactions, dependent: :destroy, foreign_key: :target_user_id
+  has_many :interactions_as_target, dependent: :destroy, foreign_key: :target_user_id, class_name: "UserInteraction"
+  has_many :user_interactions, dependent: :destroy, foreign_key: :action_user_id, class_name: "UserInteraction"
   has_one_attached :photo
 
   validates :nickname, presence: true, uniqueness: true, length: {minimun: 3, maximum: 15}

@@ -4,4 +4,13 @@ class GroupPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def show?
+    true
+  end
+
+  def edit?
+    record.master == user.profile
+  end
+
 end

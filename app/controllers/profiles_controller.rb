@@ -40,7 +40,8 @@ class ProfilesController < ApplicationController
   end
 
   def destroy
-    @profile.destroy
+    @profile.user.destroy
+    redirect_to root_path
   end
 
   private

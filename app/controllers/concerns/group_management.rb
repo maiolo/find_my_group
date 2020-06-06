@@ -63,7 +63,7 @@ module GroupManagement
           match_counter += 1
         end
       end
-      if match_counter > (g.group.group_members.count / 2)
+      if match_counter >= (g.group.group_members.count / 2)
         associated = GroupMember.create(profile: profile2, group: g.group)
         if g.group.master.nil? && profile2.favorite_role == "Narrador"
           g.group.master = profile2
