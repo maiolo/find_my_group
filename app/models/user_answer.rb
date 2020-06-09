@@ -1,4 +1,4 @@
 class UserAnswer < ApplicationRecord
-  belongs_to :answer, dependent: :destroy
-  belongs_to :profile, dependent: :destroy
+  belongs_to :answer
+  belongs_to :profile
 end
