@@ -1,7 +1,12 @@
-require("@rails/ujs").start()
-require("@rails/activestorage").start()
-require("channels")
+require('@rails/ujs').start();
+require('turbolinks').start();
+require('@rails/activestorage').start();
+require('channels');
 
-import "bootstrap";
+import 'bootstrap';
 
-console.log("beleza?")
+import { initChatroomCable } from '../channels/chatroom_channel';
+
+document.addEventListener('turbolinks:load', () => {
+  initChatroomCable();
+});
