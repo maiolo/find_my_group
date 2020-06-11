@@ -1,6 +1,13 @@
-<%= simple_form_for @group do |f| %>
-  <%= f.input :master, collection: @group.group_members.map{ |member| member.profile.nickname }%>
-  <%= f.submit %>
-<% end %>
+<div class = "container">
+  <h1>Deixe o seu grupo mais Único</h1>
+  <%= simple_form_for @group do |f| %>
+    <%= f.input :name %>
+    <%= f.association :master, collection: @group_members , label_method: :nickname, value_method: :id, include_hidden: false %>
+    <%= f.input :description %>
+    <%= f.input :game_system %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit %>
+  <% end %>
 
-<%= link_to "voltar a Grupos", groups_path %>
+  <%= link_to "voltar a Grupos", groups_path %>
+</div>

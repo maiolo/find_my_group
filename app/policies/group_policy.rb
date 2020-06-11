@@ -10,6 +10,10 @@ class GroupPolicy < ApplicationPolicy
   end
 
   def edit?
+    update?
+  end
+
+  def update?
     record.master == user.profile
   end
 

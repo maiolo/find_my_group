@@ -7,11 +7,12 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    @group_members =  @group.group_members.map{ |member| member.profile}
+    #@group_members = @group.group_members
   end
 
   def update
     @group.update(group_params)
-    @group.save
     redirect_to groups_path
   end
 
@@ -24,7 +25,7 @@ end
 private
 
   def group_params
-    params.require(:group).require(:master)
+    params.require(:group).permit(:master_id, :name, :description, :game_system, :photo)
   end
 
   def set_group
