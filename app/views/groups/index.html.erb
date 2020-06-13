@@ -21,6 +21,7 @@
           <p>Sistema: <%= group.game_system %></p>
         </div>
         <% group.group_members.each do |member|%>
+          <% member.been_viewed if member.profile == current_user.profile %>
           <div class="members d-flex">
             <% if member.profile.photo.attached? %>
               <%=link_to (cl_image_tag member.profile.photo.key, crop: :fill, class: "avatar"),  profile_path(member.profile) %>
@@ -34,7 +35,6 @@
             <% end %>
             <p><%= member.profile.city %> </p>
           </div>
-          <% member.been_viewed if member.profile == current_user.profile  %>
         <% end %>
       </div>
     <% end %>
