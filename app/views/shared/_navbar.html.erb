@@ -29,7 +29,7 @@
               <%= link_to "Meu Perfil", profile_path(current_user.profile), class: "dropdown-item" %>
             <% end %>
             <div class="position-relative">
-              <span class=<%= current_user.profile&.group_members.find_by(viewed: false) ? 'newicon-menu' : '' %>></span>
+              <span class=<%= current_user.profile&.group_members&.find_by(viewed: false) ? 'newicon-menu' : '' %>></span>
               <%= link_to "Meus Grupos", groups_path, class: "dropdown-item" %>
             </div>
             <%= link_to "Aprimore seu perfil", questions_path, class: "dropdown-item" %>
