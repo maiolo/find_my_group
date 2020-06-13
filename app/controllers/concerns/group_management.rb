@@ -36,18 +36,15 @@ module GroupManagement
     puts profile1.favorite_role, profile1.id
     puts profile2.favorite_role, profile2.id
     if profile1.favorite_role == "Narrador"
-      group = Group.create(master: profile1)
-      GroupMember.create(profile: profile1, group: group)
-      GroupMember.create(profile: profile2, group: group)
-    elsif profile2.favorite_role == "Narrador"
-      group = Group.create(master: profile2)
-      GroupMember.create(profile: profile1, group: group)
-      GroupMember.create(profile: profile2, group: group)
-    else
-      group = Group.create
-      GroupMember.create(profile: profile1, group: group)
-      GroupMember.create(profile: profile2, group: group)
+        group = Group.create(master: profile1)
+      elsif profile2.favorite_role == "Narrador"
+        group = Group.create(master: profile2)
+      else
+        group = Group.create
     end
+    GroupMember.create(profile: profile1, group: group)
+    GroupMember.create(profile: profile2, group: group)
+    Chatroom.create(name: group.name)
   end
 
   def group_association(profile1, profile2)
@@ -70,7 +67,7 @@ module GroupManagement
           g.group.save
         end
       elsif g.group.master.nil? && profile2.favorite_role == "Narrador"
-        g.group.master = profile2 
+        g.group.master = profile2
         g.group.save
         associated = GroupMember.create(profile: profile2, group: g.group)
       end
