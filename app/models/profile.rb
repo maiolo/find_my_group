@@ -52,6 +52,10 @@ class Profile < ApplicationRecord
     return "#{(in_commom/q_size*100).to_i}%"
   end
 
+  def something_new?
+    self.group_members.find_by(viewed: false) ? true : false
+  end
+
 
 
 end

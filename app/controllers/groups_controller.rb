@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
   def index
     @groups = policy_scope(Group)
     @user_groups = current_user.profile.groups
+    @new_groups = current_user.profile.group_members.where(viewed: false).map { |gm| gm.group }
   end
 
   def edit
