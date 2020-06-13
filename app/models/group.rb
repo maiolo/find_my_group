@@ -3,5 +3,4 @@ class Group < ApplicationRecord
   has_many :group_members, dependent: :destroy
 
   has_one_attached :photo
-
 end
