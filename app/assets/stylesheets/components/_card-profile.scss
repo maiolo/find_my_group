@@ -1,0 +1,115 @@
+@import "colors";
+
+.card-profile {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 506px;
+  width: 360px;
+  border-radius: 10px;
+  text-align: center;
+  opacity: 1;
+  background: {
+     image: asset_url("card-background.jpg");
+   }
+}
+
+.profile-title {
+  text-align: left;
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+.photo-box {
+  margin-right: 17px;
+  margin-left: 16px;
+  margin-bottom: 16px;
+  margin-top: 6px;
+}
+
+.box-info {
+  margin-right: 36px;
+  margin-top: 32px;
+  /* padding: 8px; */
+  text-align: right;
+}
+
+.box-info,
+h3 {
+  font-weight: bold;
+}
+
+.card-profile:hover {
+  opacity: 0.8;
+}
+
+.card-profile > img {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-profile h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-profile p {
+  font-size: 16px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-profile .card-profile-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+
+
+
+
+
+
+//-----------------------------------------------------------outras telas ------------------------------------------------------//
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
