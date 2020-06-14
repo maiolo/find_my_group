@@ -31,15 +31,16 @@ module GroupManagement
 
   def group_creation(profile1, profile2)
     if profile1.favorite_role == "Narrador"
-        group = Group.create(master: profile1)
-      elsif profile2.favorite_role == "Narrador"
-        group = Group.create(master: profile2)
-      else
-        group = Group.create
+      group = Group.create(master: profile1)
+    elsif profile2.favorite_role == "Narrador"
+      group = Group.create(master: profile2)
+    else
+      group = Group.create
     end
     GroupMember.create(profile: profile1, group: group)
     GroupMember.create(profile: profile2, group: group)
-    Chatroom.create(name: group.name)
+
+    chatroom = Chatroom.create(name: group.name, group: group)
   end
 
   def group_association(profile1, profile2)
