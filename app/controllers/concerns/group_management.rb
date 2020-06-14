@@ -36,16 +36,16 @@ module GroupManagement
     puts profile1.favorite_role, profile1.id
     puts profile2.favorite_role, profile2.id
     if profile1.favorite_role == "Narrador"
-        group = Group.create(master: profile1)
-      elsif profile2.favorite_role == "Narrador"
-        group = Group.create(master: profile2)
-      else
-        group = Group.create
+      group = Group.create(master: profile1)
+    elsif profile2.favorite_role == "Narrador"
+      group = Group.create(master: profile2)
+    else
+      group = Group.create
     end
     GroupMember.create(profile: profile1, group: group)
     GroupMember.create(profile: profile2, group: group)
-    raise
-    Chatroom.create(name: group.name, group_id: group.id)
+
+    chatroom = Chatroom.create(name: group.name, group: group)
   end
 
   def group_association(profile1, profile2)
