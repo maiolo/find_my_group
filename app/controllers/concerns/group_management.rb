@@ -44,7 +44,8 @@ module GroupManagement
     end
     GroupMember.create(profile: profile1, group: group)
     GroupMember.create(profile: profile2, group: group)
-    Chatroom.create(name: group.name)
+    raise
+    Chatroom.create(name: group.name, group_id: group.id)
   end
 
   def group_association(profile1, profile2)
