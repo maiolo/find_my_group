@@ -7,9 +7,9 @@
         </div>
         <div class="photo-box">
           <% if @profile.photo.attached? %>
-              <%= cl_image_tag @profile.photo.key, height: 224, width: 274, crop: :fill %>
+              <%= cl_image_tag @profile.photo.key, height: 225, width: 275, crop: :fill %>
             <% else %>
-              <%= image_tag "avatar-placeholder.gif", height: 255, width: 275, crop: :fill %>
+              <%= image_tag "avatar-placeholder.gif", height: 225, width: 275, crop: :fill %>
           <% end %>
         </div>
         <div class="col-md-auto">

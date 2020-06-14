@@ -4,13 +4,13 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  height: 506px;
+  height: 670px;
   width: 360px;
-  border-radius: 10px;
+  border-radius: 20px;
   text-align: center;
   opacity: 1;
   background: {
-     image: asset_url("card-background.jpg");
+     image: asset_url("magic-background_large.jpg");
    }
 }
 
@@ -24,7 +24,7 @@
   margin-right: 17px;
   margin-left: 16px;
   margin-bottom: 16px;
-  margin-top: 6px;
+  margin-top: 5px;
 }
 
 .box-info {
