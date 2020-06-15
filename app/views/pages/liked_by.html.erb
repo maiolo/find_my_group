@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Essas Pessoas gostaram de você!</h1>
+  <h1>Eles querem jogar com você!</h1>
   <div class="row justify-content-md-center">
     <% @profiles.each do |profile| %>
       <% if UserInteraction.all.where(action_user: current_user).where(target_user: profile).length.zero?%>
