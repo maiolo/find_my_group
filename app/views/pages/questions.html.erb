@@ -1,13 +1,17 @@
-<div class="container">
+<div class="container row justify-content-center">
 
 <% unless @question.nil? %>
-  <%=@question.description%>
-  <%= simple_form_for @user_answer do |f| %>
-    <%=f.input :answer_id, label: '', collection: @answers.map{ |a| [a.description, a.id] }, as: :radio_buttons%>
-    <%=f.submit "Enviar Resposta"%>
-  <% end %>
+  <div class="question col-auto align-self-center">
+    <%=@question.description%>
+    <%= simple_form_for @user_answer do |f| %>
+    <div class="answers">
+      <%=f.input :answer_id, label: '', collection: @answers.map{ |a| [a.description, a.id] }, as: :radio_buttons, wrapper: :custom_collection%>
+    </div>
+      <%=f.submit "Enviar Resposta", class: "btn btn-outline-danger"%>
+    <% end %>
+  </div>
 <% else %>
-  <h4>Você Respondeu todos as Perguntas</h4>
+  <h4>Você Respondeu todas as Perguntas</h4>
 <% end %>
 
 </div>
