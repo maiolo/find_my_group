@@ -15,7 +15,10 @@
           <%= link_to "Home", profiles_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Veja seus Likes", liked_by_path, class: "nav-link" %>
+          <%= link_to "Quem quer jogar?", liked_by_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Meus Grupos", groups_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <span class=<%= current_user.profile&.something_new? ? 'newicon-avatar' : '' %>></span>
