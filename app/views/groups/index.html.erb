@@ -1,16 +1,17 @@
 <div class="container">
   <% @user_groups.each do |group| %>
   <div class="cards">
-    <div class="card-profile">
+    <div class="card-group">
 
-      <div class="profile-title">
+      <div class="group-title">
         <h1> <%= group.name %> <%= '- Grupo Novo' if @new_groups.include?(group) %> </h1>
-        <div class="photo-box">
+        <div class="group-photo-box">
           <% if group.photo.attached? %>
-            <%=link_to (cl_image_tag group.photo.key, height: 200, width: 400, crop: :fill) %>
+            <%=link_to (cl_image_tag group.photo.key, height: 225, width: 275, crop: :fill) %>
           <% else %>
-            <%=link_to (image_tag "icon.png", height: 200, width: 400, crop: :fill) %>
+            <%=link_to (image_tag "icon.png", height: 225, width: 275, crop: :fill) %>
           <% end %>
+        </div>
           <div class="col-md-auto">
             <div class="box-info">
               <h2>Mestre - <%= group.master.nil? ? "Sem mestre" : group.master&.nickname %> </h2>
@@ -25,7 +26,7 @@
                     <%=link_to (image_tag "avatar-placeholder.gif", crop: :fill, class: "avatar"),  profile_path(member.profile) %>
                   <% end %>
                   <% if member.profile == group.master %>
-                    <h3><b> <%= link_to member.profile.nickname, profile_path(member.profile) %> </h3></b>
+                    <h3><b><%= link_to member.profile.nickname, profile_path(member.profile)%></b></h3>
                   <% else %>
                     <h3> <%= link_to member.profile.nickname, profile_path(member.profile) %> </h3>
                   <% end %>
@@ -33,7 +34,7 @@
                 </div>
                 <% end %>
             </div>
-        </div>
+
       </div>
       <% if group.chatroom %>
        <%= link_to "Chatroom", chatroom_path(group.chatroom)%>

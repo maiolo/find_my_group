@@ -19,6 +19,14 @@ ul .fas {
   line-height: 2;
 }
 
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+
+.navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
+    color: white;
+}
+
 .newicon-avatar {
   position: absolute;
   top: 0px;
