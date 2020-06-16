@@ -1,5 +1,13 @@
 @import "colors";
 
+.cards {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
 .groups {
   display: grid;
   grid-template-columns: 1fr, 1fr, 1fr;
@@ -15,6 +23,7 @@
   border-radius: 20px;
   text-align: center;
   opacity: 1;
+  margin-bottom: 16px;
   background: {
      image: asset_url("card_group_bg_v2.jpg");
    }
