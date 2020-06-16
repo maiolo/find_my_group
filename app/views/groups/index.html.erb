@@ -13,17 +13,14 @@
           <% end %>
         </div>
           <div class="col-md-auto">
-            <div class="box-info">
-              <h2>Mestre - <%= group.master.nil? ? "Sem mestre" : group.master&.nickname %> </h2>
-              <p> <%= group.description %> </p>
-              <p>Sistema: <%= group.game_system %></p>
+            <div class="box-info-group">
               <% group.group_members.each do |member|%>
                 <% member.been_viewed if member.profile == current_user.profile %>
-                <div class="members d-flex">
+                <div class="members d-flex justify-content-start">
                   <% if member.profile.photo.attached? %>
-                    <%=link_to (cl_image_tag member.profile.photo.key, crop: :fill, class: "avatar"),  profile_path(member.profile) %>
+                    <%=link_to (cl_image_tag member.profile.photo.key, crop: :fill, class: "avatar-square"),  profile_path(member.profile) %>
                   <% else %>
-                    <%=link_to (image_tag "avatar-placeholder.gif", crop: :fill, class: "avatar"),  profile_path(member.profile) %>
+                    <%=link_to (image_tag "avatar-placeholder.gif", crop: :fill, class: "avatar-square"),  profile_path(member.profile) %>
                   <% end %>
                   <% if member.profile == group.master %>
                     <h3><b><%= link_to member.profile.nickname, profile_path(member.profile)%></b></h3>
@@ -33,6 +30,11 @@
                   <p><%= member.profile.city %> </p>
                 </div>
                 <% end %>
+                <div>
+                  <h2>Mestre - <%= group.master.nil? ? "Sem mestre" : group.master&.nickname %> </h2>
+                  <p> <%= group.description %> </p>
+                  <p>Sistema: <%= group.game_system %></p>
+                </div>
             </div>
 
       </div>

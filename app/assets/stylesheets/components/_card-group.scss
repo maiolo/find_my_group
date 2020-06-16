@@ -1,5 +1,11 @@
 @import "colors";
 
+.groups {
+  display: grid;
+  grid-template-columns: 1fr, 1fr, 1fr;
+  grid-gap: 16px;
+}
+
 .card-group {
   overflow: hidden;
   background: white;
@@ -16,34 +22,44 @@
 
 .group-title {
   text-align: left;
-  margin-top: 20px;
+  margin-top: 23px;
   margin-left: 40px;
 }
 
 .group-title h1 {
   font-size: 24px;
   font-weight: bold;
+  color: white;
 }
 
 .group-photo-box {
   margin-right: 45px;
   margin-left: 2px;
   margin-bottom: 0px;
-  margin-top: 12px;
+  margin-top: 9px;
 }
 
-.box-info {
+.box-info-group {
   margin-right: 36px;
   margin-top: 32px;
   /* padding: 8px; */
   text-align: right;
 }
 
-.box-info,
+.box-info-group,
 h3 {
-  font-weight: bold;
+  font-weight: normal;
+  font-size: 24px;
 }
 
+.box-info-group a {
+  color: white;
+}
+
+.box-info-group a:hover {
+  //color: gray;
+  text-decoration: none;
+}
 .card-group:hover {
   opacity: 0.8;
 }
