@@ -1,19 +1,27 @@
-<container class="">
-  <h1>#<%= @chatroom.name %></h1>
-  <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+<div class="container">
+  <h1><%= @chatroom.group.name %></h1>
+  <div id="messages" class="overflow-auto" data-chatroom-id="<%= @chatroom.id %>">
     <% @chatroom.messages.each do |message| %>
-      <div class="message-container" id="message-<%= message.id %>">
-        <i class="author">
-          <span><%= message.user.profile.nickname %></span>
-          <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-        </i>
-        <p><%= message.content %></p>
+      <div class="message <%= message.user == current_user ? "message-sent" : "" %> ">
+        <div class="<%= message.user == current_user ? "message-self" : "message-container" %> " id="message-<%= message.id %>">
+          <%# <i class="author tooltip"> %>
+            <%# <span><%= message.user.profile.nickname %></span>
+            <%# <small><%= message.created_at.strftime("%e/%m/%Y - %T") %></small>
+          <%# </i> %>
+          <% if message.user.profile.photo.attached? %>
+            <%= cl_image_tag message.user.profile.photo.key, class: "avatar" %>
+          <% else %>
+            <%= image_tag "avatar-placeholder.gif", class: "avatar" %>
+          <% end %>          
+          <p><%= message.content %></p>
+        </div>
       </div>
     <% end %>
   </div>
-</container>
-<div>
-  <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-    <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %>
-  <% end %>
+  <div>
+    <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+      <%= f.input :content, label: false, placeholder: "Escreva sua mensagem!"%>
+      <%= f.submit "Enviar mensagem"%>
+    <% end %>
+  </div>
 </div>
