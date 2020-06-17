@@ -1,0 +1,41 @@
+
+
+.overflow-auto {
+    width: 100%;
+    height: 30em;
+    margin: 20px;
+    box-shadow: 1px 1px 5px #27272794;
+}
+.message-sent{
+  display: flex;
+  flex-flow: row-reverse;
+}
+.message-container{
+  // position: absolute;
+  width: fit-content;
+  font-size: 16px;
+  background-color: lightgray;
+  display: flex;
+  padding: 3px 1em;
+  margin: 5px;
+  border-radius: 50px;
+  .avatar {
+    margin-right: 1em;
+  }
+}
+
+.message-self{
+  // position: absolute;
+  flex-flow: row-reverse;
+  width: fit-content;
+  font-size: 16px;
+  background-color: lightgreen;
+  display: flex;
+  padding: 3px 1em;
+  margin: 5px;
+  border-radius: 50px;
+
+  .avatar {
+    margin-left: 1em;
+  }
+}
