@@ -1,5 +1,11 @@
 @import "index";
 
+.btn-edit {
+  position: relative;
+  top: 368px;
+  right: 1px;
+}
+
 .btn-flat {
   color: white;
   padding: 8px 24px;
@@ -13,52 +19,40 @@
   color: white;
 }
 
-.btn-action {
-  background: #f4f4f4;
-  border: solid;
-  border-color: #cc5b4d;
-  border-radius: 8px;
-  width: 112px;
-  height: 40px;
-  text-align: center;
-  border-width: 1px;
+.btn-chat {
+  //background: #f4f4f4;
+  //border: solid;
+  //border-color: #cc5b4d;
+  //border-radius: 8px;
+  //width: 112px;
+  //height: 40px;
+  //text-align: center;
+  //border-width: 1px;
   position: absolute;
-  top: 617px;
-  right: 38px;
+  top: 405px;
+  right: 24px;
   padding-top: 7px;
 }
 
-.btn-action a {
-  color: black;
+.btn-chat a {
+  color: white;
+  background-color: #cc5b4d;
+  border-color: black;
 }
 
-.btn-action:hover {
 
+
+.btn-edit a {
+  color: white;
+  background-color: #cc5b4d;
+  border-color: black;
 }
 
-.btn-action-edit {
-  background: #f4f4f4;
-  border: solid;
-  border-color: #cc5b4d;
-  border-radius: 8px;
-  width: 112px;
-  height: 40px;
-  text-align: center;
-  border-width: 1px;
-  position: absolute;
-  top: 617px;
-  right: 38px;
-  padding-top: 7px;
-}
-
-.btn-action-edit a {
-  color: black;
-}
-
-.btn-action-edit:hover {
+.btn-primary:hover {
+  background-color: #7c332c;
+  border-color: black;
 
 }
-
 
 .dislike-btn {
   height: 45px;
