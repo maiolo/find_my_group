@@ -32,13 +32,13 @@
 
 .group-title {
   text-align: left;
-  margin-top: 10px;
+  margin-top: 12px;
   margin-left: 25px;
 }
 
 .group-title h1 {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 20px;
+  //font-weight: bold;
   color: white;
   font-family: Roboto;
 }
@@ -112,6 +112,12 @@ h3 {
   margin-bottom: 4px;
   margin-left: 8px;
   font-family: Roboto;
+
+}
+
+.group-member h3 {
+font-size: 22px;
+color: black;
 }
 
 .group-info {
