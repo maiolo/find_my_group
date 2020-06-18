@@ -6,6 +6,30 @@
   right: 1px;
 }
 
+.btn-edit-show {
+  position: relative;
+  top: 559px;
+}
+
+.btn-chat-show {
+  position: absolute;
+  top: 611px;
+  right: 40px;
+  padding-top: 7px;
+}
+
+.btn-chat-show a {
+  color: white;
+  background-color: #cc5b4d;
+  border-color: black;
+}
+
+.btn-edit-show a {
+  color: white;
+  background-color: #cc5b4d;
+  border-color: black;
+}
+
 .btn-flat {
   color: white;
   padding: 8px 24px;

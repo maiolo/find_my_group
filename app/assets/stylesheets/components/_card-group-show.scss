@@ -14,98 +14,89 @@
   grid-gap: 16px;
 }
 
-.card-group {
+.card-group-show {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  height: 471px;
-  width: 240px;
+  height: 685px;
+  width: 360px;
   border-radius: 20px;
   text-align: center;
   opacity: 1;
   position: relative;
   margin-bottom: 16px;
   background: {
-     image: asset_url("card_group_bg_v5.jpg");
+     image: asset_url("card_group_bg_v2.jpg");
    }
 }
 
-.group-title {
+.group-title-show {
   text-align: left;
-  margin-top: 12px;
-  margin-left: 25px;
+  margin-top: 23px;
+  margin-left: 40px;
 }
 
-.group-title a {
-  color: white;
-}
-
-.group-title:hover a {
-  text-decoration: none;
-}
-
-.group-title h1 {
-  font-size: 20px;
-  //font-weight: bold;
+.group-title-show h1 {
+  font-size: 24px;
+  font-weight: bold;
   color: white;
   font-family: Roboto;
 }
 
-.group-photo-box {
+.group-photo-box-show {
   position: absolute;
-  top: 41px;
-  right: 28px;
+  top: 61px;
+  right: 43px;
 }
 
-.box-info-group {
+.box-info-group-show {
   /* padding: 8px; */
   text-align: right;
   position: absolute;
-  top: 221px;
-  display: inline-grid;
+  top: 324px;
 }
 
-.box-info-group,
+.box-info-group-show,
 h3 {
   font-weight: normal;
   font-size: 24px;
   font-family: sans-serif;
 }
 
-.box-info-group a {
+.box-info-group-show a {
   color: white;
   font-weight: lighter;
 }
 
-.box-info-group a:hover {
+.box-info-group-show a:hover {
   //color: gray;
   text-decoration: none;
 }
-.card-group:hover {
+.card-group-show:hover {
   //opacity: 0.8;
 }
 
-.card-group > img {
+.card-group-show > img {
   height: 250px;
   width: 100%;
   object-fit: cover;
 }
 
-.card-group h2 {
+.card-group-show h2 {
   font-size: 20px;
   font-weight: lighter;
   margin: 0;
   font-family: Roboto;
 }
 
-.card-group p {
+.card-group-show p {
   font-size: 16px;
   opacity: .7;
   margin: 0;
 }
 
 
-.card-group .card-group-infos {
+.card-group-show .card-group-infos-show {
   padding: 16px;
   display: flex;
   justify-content: space-between;
@@ -114,22 +105,19 @@ h3 {
 }
 
 
-.group-member {
+.group-member-show {
   display: flex;
   justify-content: right;
   margin-bottom: 4px;
   margin-left: 8px;
   font-family: Roboto;
-
 }
 
-.group-member h3 {
-font-size: 22px;
-color: black;
-}
-
-.group-info {
+.group-info-show {
   position: absolute;
+    top: 180px;
+    left: 10px;
+  text-align: left;
 }
 
 
@@ -169,5 +157,4 @@ color: black;
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
-
 

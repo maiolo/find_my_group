@@ -1,1 +1,59 @@
-<h1><%=@group.master%></h1>
+<div class="container">
+  <div class="cards">
+    <% group = @group %>
+      <div class="card-group-show">
+
+      <div class="group-title-show">
+      <h1> <%= group.name %>  </h1>
+      <div class="group-photo-box-show">
+        <% if group.photo.attached? %>
+        <%=link_to (cl_image_tag group.photo.key, height: 225, width: 275, crop: :fill) %>
+        <% else %>
+        <%=link_to (image_tag "icon.png", height: 225, width: 275, crop: :fill) %>
+        <% end %>
+      </div>
+        <div class="box-info-group-show">
+          <% group.group_members.each do |member|%>
+          <% member.been_viewed if member.profile == current_user.profile %>
+          <div class="group-member-show">
+            <% if member.profile.photo.attached? %>
+              <%=link_to (cl_image_tag member.profile.photo.key, crop: :fill, class: "avatar-square"),  profile_path(member.profile) %>
+            <% else %>
+              <%=link_to (image_tag "avatar-placeholder.gif", crop: :fill, class: "avatar-square"),  profile_path(member.profile) %>
+            <% end %>
+            <% if member.profile == group.master %>
+              <h3><b><%= link_to member.profile.nickname, profile_path(member.profile)%></b></h3>
+              <p> <%= member.profile.city %> </p>
+            <% else %>
+              <h3> <%= link_to member.profile.nickname, profile_path(member.profile) %> </h3>
+              <p>   -  <%= member.profile.city %> </p>
+            <% end %>
+
+          </div>
+          <% end %>
+          <div class="group-info-show">
+            <h2>Mestre - <%= group.master.nil? ? "Sem mestre" : group.master&.nickname %> </h2>
+            <p> <%= group.description %> </p>
+            <p>Sistema: <%= group.game_system %></p>
+          </div>
+        </div>
+          <div class="btn-chat-show">
+            <% if group.chatroom %>
+              <%= link_to "Conversar", chatroom_path(group.chatroom), class: "btn btn-primary"%>
+            <% end %>
+          </div>
+
+        <div class="btn-edit-show">
+        <% if group.master == current_user.profile %>
+          <%= link_to "Editar", edit_group_path(group), class: "btn btn-primary" %>
+        <% end %>
+        </div>
+
+      </div>
+      </div>
+
+
+
+
+  </div>
+</div>
