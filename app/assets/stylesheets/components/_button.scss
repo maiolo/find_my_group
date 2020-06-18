@@ -13,6 +13,53 @@
   color: white;
 }
 
+.btn-action {
+  background: #f4f4f4;
+  border: solid;
+  border-color: #cc5b4d;
+  border-radius: 8px;
+  width: 112px;
+  height: 40px;
+  text-align: center;
+  border-width: 1px;
+  position: absolute;
+  top: 617px;
+  right: 38px;
+  padding-top: 7px;
+}
+
+.btn-action a {
+  color: black;
+}
+
+.btn-action:hover {
+
+}
+
+.btn-action-edit {
+  background: #f4f4f4;
+  border: solid;
+  border-color: #cc5b4d;
+  border-radius: 8px;
+  width: 112px;
+  height: 40px;
+  text-align: center;
+  border-width: 1px;
+  position: absolute;
+  top: 617px;
+  right: 38px;
+  padding-top: 7px;
+}
+
+.btn-action-edit a {
+  color: black;
+}
+
+.btn-action-edit:hover {
+
+}
+
+
 .dislike-btn {
   height: 45px;
   width: 45px;
@@ -25,7 +72,7 @@
 
   &:hover {
     position: relative;
-    background-color: $darker-red; 
+    background-color: $darker-red;
     transition: 0.5s;
     top: 2px;
     right: -2px;
@@ -47,7 +94,7 @@
 
   &:hover {
     position: relative;
-    background-color: $olive-green; 
+    background-color: $olive-green;
     transition: 0.5s;
     top: 2px;
     right: -2px;
