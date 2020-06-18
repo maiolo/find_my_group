@@ -23,7 +23,7 @@
             <% end %>
             <% if member.profile == group.master %>
               <h3><b><%= link_to member.profile.nickname, profile_path(member.profile)%></b></h3>
-              <p>   -   <%= member.profile.city %> </p>
+              <p> <%= member.profile.city %> </p>
             <% else %>
               <h3> <%= link_to member.profile.nickname, profile_path(member.profile) %> </h3>
               <p>   -  <%= member.profile.city %> </p>
@@ -37,21 +37,23 @@
             <p>Sistema: <%= group.game_system %></p>
           </div>
         </div>
-          <div class="btn-action">
+          <div class="btn-chat">
             <% if group.chatroom %>
-              <%= link_to "Chatroom", chatroom_path(group.chatroom)%>
+              <%= link_to "Conversar", chatroom_path(group.chatroom), class: "btn btn-primary"%>
             <% end %>
           </div>
 
-
+        <div class="btn-edit">
+        <% if group.master == current_user.profile %>
+          <%= link_to "Editar", edit_group_path(group), class: "btn btn-primary" %>
+        <% end %>
+        </div>
 
       </div>
       </div>
 
 
-      <% if group.master == current_user.profile %>
-        <%= link_to "Editar Grupo", edit_group_path(group), class: "btn btn-primary" %>
-      <% end %>
+
     <% end %>
   </div>
 </div>
