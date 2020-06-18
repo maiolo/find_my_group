@@ -7,9 +7,9 @@
       <h1> <%= group.name %> <%= '- Grupo Novo' if @new_groups.include?(group) %> </h1>
       <div class="group-photo-box">
         <% if group.photo.attached? %>
-        <%=link_to (cl_image_tag group.photo.key, height: 225, width: 275, crop: :fill) %>
+        <%=link_to (cl_image_tag group.photo.key, height: 149, width: 184, crop: :fill) %>
         <% else %>
-        <%=link_to (image_tag "icon.png", height: 225, width: 275, crop: :fill) %>
+        <%=link_to (image_tag "icon.png", height: 149, width: 184, crop: :fill) %>
         <% end %>
       </div>
         <div class="box-info-group">
@@ -23,19 +23,12 @@
             <% end %>
             <% if member.profile == group.master %>
               <h3><b><%= link_to member.profile.nickname, profile_path(member.profile)%></b></h3>
-              <p> <%= member.profile.city %> </p>
             <% else %>
               <h3> <%= link_to member.profile.nickname, profile_path(member.profile) %> </h3>
-              <p>   -  <%= member.profile.city %> </p>
             <% end %>
 
           </div>
           <% end %>
-          <div class="group-info">
-            <h2>Mestre - <%= group.master.nil? ? "Sem mestre" : group.master&.nickname %> </h2>
-            <p> <%= group.description %> </p>
-            <p>Sistema: <%= group.game_system %></p>
-          </div>
         </div>
           <div class="btn-chat">
             <% if group.chatroom %>

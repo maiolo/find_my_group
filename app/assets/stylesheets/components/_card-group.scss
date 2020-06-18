@@ -18,22 +18,22 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  height: 685px;
-  width: 360px;
+  height: 471px;
+  width: 240px;
   border-radius: 20px;
   text-align: center;
   opacity: 1;
   position: relative;
   margin-bottom: 16px;
   background: {
-     image: asset_url("card_group_bg_v2.jpg");
+     image: asset_url("card_group_bg_v5.jpg");
    }
 }
 
 .group-title {
   text-align: left;
-  margin-top: 23px;
-  margin-left: 40px;
+  margin-top: 10px;
+  margin-left: 25px;
 }
 
 .group-title h1 {
@@ -45,15 +45,16 @@
 
 .group-photo-box {
   position: absolute;
-  top: 61px;
-  right: 43px;
+  top: 41px;
+  right: 28px;
 }
 
 .box-info-group {
   /* padding: 8px; */
   text-align: right;
   position: absolute;
-  top: 324px;
+  top: 221px;
+  display: inline-grid;
 }
 
 .box-info-group,
