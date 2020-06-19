@@ -28,7 +28,7 @@
       <div class="box-quote">
          <h1><%= @profile.description %></h1>
       </div>
-      <div class="btn-action">
+      <div class="btn-chat">
         <% if current_user.profile == @profile%>
           <%= link_to "Editar Perfil", edit_profile_path(@profile), class: "btn btn-primary"%>
         <% end %>
@@ -36,6 +36,6 @@
       </div>
     </div>
 </div>
-  
+
 
 
