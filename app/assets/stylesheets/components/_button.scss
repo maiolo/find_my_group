@@ -1,5 +1,12 @@
 @import "index";
 
+.btn-action {
+  display: flex;
+  margin-right: 8px;
+  justify-content: space-evenly;
+  margin-top: 70px;
+}
+
 .btn-edit {
   position: relative;
   top: 368px;

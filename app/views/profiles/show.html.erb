@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container d-flex justify-content-between">
   <div class="cards">
     <div class="card-profile">
       <div class="profile-title">
@@ -13,20 +13,29 @@
       </div>
       <div class="col-md-auto">
         <div class="box-info">
-          <h3><%=@profile.nickname%></h3>
-          <h2><%=@profile.favorite_role%></h2>
+          <h1><%=@profile.nickname%></h1>
+          <h3><%=@profile.favorite_role%></h3>
           <p><%= @profile.gender %></p>
+          <p><%= @profile.country %></p>
+          <p><%= @profile.state %></p>
           <p><%= @profile.city %></p>
-          <p><%= @profile.description %></p>
         </div>
       </div>
+
     </div>
   </div>
-
-  <% if current_user.profile == @profile%>
-    <%= link_to "Editar Perfil", edit_profile_path(@profile), class: "btn btn-outline-primary"%>
-  <% end %>
-  <%= link_to "Back to Profiles", profiles_path, class: "btn btn-outline-primary"%>
+    <div class="profile-info">
+      <div class="box-quote">
+         <h1><%= @profile.description %></h1>
+      </div>
+      <div class="btn-action">
+        <% if current_user.profile == @profile%>
+          <%= link_to "Editar Perfil", edit_profile_path(@profile), class: "btn btn-primary"%>
+        <% end %>
+        <%= link_to "Back to Profiles", profiles_path, class: "btn btn-primary"%>
+      </div>
+    </div>
 </div>
   
+
 
