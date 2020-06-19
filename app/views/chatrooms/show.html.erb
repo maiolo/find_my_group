@@ -1,28 +1,51 @@
 <div class="container">
   <h1><%= @chatroom.group.name %></h1>
-  <div id="messages" class="overflow-auto" data-chatroom-id="<%= @chatroom.id %>">
-    <% @chatroom.messages.each do |message| %>
-      <div class="message <%= message.user == current_user ? "message-sent" : "" %> ">
-        <div class="<%= message.user == current_user ? "message-self" : "message-container" %> " id="message-<%= message.id %>">
-          <%# <i class="author tooltip"> %>
-            <%# <span><%= message.user.profile.nickname %></span>
-            <%# <small><%= message.created_at.strftime("%e/%m/%Y - %T") %></small>
-          <%# </i> %>
-          <% if message.user.profile.photo.attached? %>
-            <%= cl_image_tag message.user.profile.photo.key, class: "avatar" %>
-          <% else %>
-            <%= image_tag "avatar-placeholder.gif", class: "avatar" %>
-          <% end %>          
-          <p><%= message.content %></p>
-        </div>
+  <div class="chat-container">
+    <div class="chat-participants">
+      <ul class="members">
+        <% @group_members.each do |member| %>
+          <li>
+            <div class='member'>
+              <% if member.profile.photo.attached? %>
+                <%= cl_image_tag member.profile.photo.key, class: "avatar" %>
+              <% else %>
+                <%= image_tag "avatar-placeholder.gif", class: "avatar" %>
+              <% end %>
+              <b class="nickname" ><%= member.profile.nickname %></b>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>  
+    <div class='msg'>
+      <div id="messages" class="overflow-auto" data-chatroom-id="<%= @chatroom.id %>">
+        <% @chatroom.messages.each do |message| %>
+          <div class="message">
+            <div class="message-container" id="message-<%= message.id %>">
+              <%# <i class="author tooltip"> %>
+                <%# <span><%= message.user.profile.nickname %></span>
+                <%# <small><%= message.created_at.strftime("%e/%m/%Y - %T") %></small>
+              <%# </i> %>
+              <% if message.user.profile.photo.attached? %>
+                <%= cl_image_tag message.user.profile.photo.key, class: "avatar" %>
+              <% else %>
+                <%= image_tag "avatar-placeholder.gif", class: "avatar" %>
+              <% end %>
+              <b><%= message.user.profile.nickname %>: &nbsp</b>
+              <% if message.content.include? "http://" or message.content.include? "https://" %>
+                <a href="<%=message.content%>" target="_blank"> <%=message.content%> </a>
+              <% else %>
+                <p><%= message.content %></p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        <div id="anchor"></div>
       </div>
-    <% end %>
-    <div id="anchor"></div>
-  </div>
-  <div>
-    <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-      <%= f.input :content, label: false, placeholder: "Escreva sua mensagem!"%>
-      <%= f.submit "Enviar mensagem"%>
-    <% end %>
-  </div>
+      <div>
+        <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+          <%= f.input :content, label: false, placeholder: "Escreva sua mensagem!"%>
+        <% end %>
+      </div>
+    </div>
 </div>
