@@ -1,32 +1,32 @@
 <div class="container">
-
-    <div class="cards">
-      <div class="card-profile">
-        <div class="profile-title">
-          <h2><%=@profile.first_name%> <%=@profile.last_name%></h2>
-        </div>
-        <div class="photo-box">
-          <% if @profile.photo.attached? %>
-              <%= cl_image_tag @profile.photo.key, height: 225, width: 275, crop: :fill %>
-            <% else %>
-              <%= image_tag "avatar-placeholder.gif", height: 225, width: 275, crop: :fill %>
-          <% end %>
-        </div>
-        <div class="col-md-auto">
-          <div class="box-info">
-            <h3><%=@profile.nickname%></h3>
-            <h2><%=@profile.favorite_role%></h2>
-            <p><%= @profile.gender %></p>
-            <p><%= @profile.city %></p>
-            <p><%= @profile.description %></p>
-          </div>
+  <div class="cards">
+    <div class="card-profile">
+      <div class="profile-title">
+        <h2><%=@profile.first_name%> <%=@profile.last_name%></h2>
+      </div>
+      <div class="photo-box">
+        <% if @profile.photo.attached? %>
+            <%= cl_image_tag @profile.photo.key, height: 225, width: 275, crop: :fill %>
+          <% else %>
+            <%= image_tag "avatar-placeholder.gif", height: 225, width: 275, crop: :fill %>
+        <% end %>
+      </div>
+      <div class="col-md-auto">
+        <div class="box-info">
+          <h3><%=@profile.nickname%></h3>
+          <h2><%=@profile.favorite_role%></h2>
+          <p><%= @profile.gender %></p>
+          <p><%= @profile.city %></p>
+          <p><%= @profile.description %></p>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<% if current_user.profile == @profile%>
-           <%= link_to "Editar Perfil", edit_profile_path(@profile)%>
-          <% end %>
-          <%= link_to "Back to Profiles", profiles_path%>
+  <% if current_user.profile == @profile%>
+    <%= link_to "Editar Perfil", edit_profile_path(@profile), class: "btn btn-outline-primary"%>
+  <% end %>
+  <%= link_to "Back to Profiles", profiles_path, class: "btn btn-outline-primary"%>
+</div>
+  
+
