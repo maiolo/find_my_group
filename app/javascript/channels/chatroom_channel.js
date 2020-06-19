@@ -17,4 +17,10 @@ const initChatroomCable = () => {
   }
 };
 
+function updateScroll(){
+  var element = document.getElementById("messages");
+  element.scrollTop = element.scrollHeight;
+}
+
+setInterval(updateScroll,1000);
 export { initChatroomCable };
