@@ -1,10 +1,12 @@
-
+#messages {
+  overflow-anchor: none;
+}
 
 .overflow-auto {
-    width: 100%;
-    height: 30em;
-    margin: 20px;
-    box-shadow: 1px 1px 5px #27272794;
+  width: 100%;
+  height: 30em;
+  margin: 20px;
+  box-shadow: 1px 1px 5px #27272794;
 }
 .message-sent{
   display: flex;
@@ -38,4 +40,9 @@
   .avatar {
     margin-left: 1em;
   }
+}
+
+#anchor {
+  overflow-anchor: auto;
+  height: 1px;
 }
