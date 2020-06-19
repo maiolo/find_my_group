@@ -76,7 +76,7 @@ module GroupManagement
   end
 
   def give_alert
-    sweetalert('Chega mais!', title = 'Você está um novo Grupo', imageUrl: 'assets/giphy.webp',  persistent: "Bora lá!" )
+    sweetalert('Chega mais!', title = 'Você está um novo Grupo', imageUrl: 'assets/giphy.gif',  persistent: "Bora lá!" )
   end
 
 end
