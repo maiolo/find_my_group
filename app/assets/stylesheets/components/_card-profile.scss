@@ -54,6 +54,9 @@ h3 {
   font-size: 20px;
   font-weight: bold;
   margin: 0;
+  color: white;
+  text-align: right;
+  margin-right: 40px;
 }
 
 .card-profile p {
@@ -62,6 +65,11 @@ h3 {
   margin: 0;
 }
 
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
 
 .card-profile .card-profile-infos {
   padding: 16px;
@@ -72,8 +80,9 @@ h3 {
 }
 
 
-
-
+.box-quote {
+  margin-top: 32px;
+}
 
 
 

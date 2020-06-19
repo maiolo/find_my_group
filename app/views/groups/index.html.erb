@@ -4,7 +4,7 @@
       <div class="card-group">
 
       <div class="group-title">
-      <h1> <%= link_to group.name, group_path(group) %> <%= '- Grupo Novo' if @new_groups.include?(group) %> </h1>
+      <h1> <%= link_to group.name, group_path(group)%></h1>
       <div class="group-photo-box">
         <% if group.photo.attached? %>
         <%=link_to (cl_image_tag group.photo.key, height: 149, width: 184, crop: :fill) %>
