@@ -44,10 +44,6 @@
   margin-left: 1px;
 }
 
-.message-sent{
-  display: flex;
-  flex-flow: row-reverse;
-}
 .message-container{
   // position: absolute;
   width: fit-content;
@@ -66,7 +62,7 @@
 }
 
 .message-self{
-  // position: absolute;
+  //position: absolute;
   flex-flow: row-reverse;
   width: fit-content;
   font-size: 16px;
@@ -79,9 +75,4 @@
   .avatar {
     margin-left: 1em;
   }
-}
-
-#anchor {
-  overflow-anchor: auto;
-  height: 1px;
 }

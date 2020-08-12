@@ -21,7 +21,7 @@
       <div id="messages" class="overflow-auto" data-chatroom-id="<%= @chatroom.id %>">
         <% @chatroom.messages.each do |message| %>
           <div class="message">
-            <div class="message-container" id="message-<%= message.id %>">
+            <div class=<%= message.user.id == current_user.id ? "message-self message-sent" : "message-container" %> id="message-<%= message.id %>">
               <%# <i class="author tooltip"> %>
                 <%# <span><%= message.user.profile.nickname %></span>
                 <%# <small><%= message.created_at.strftime("%e/%m/%Y - %T") %></small>
@@ -40,7 +40,6 @@
             </div>
           </div>
         <% end %>
-        <div id="anchor"></div>
       </div>
       <div>
         <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
