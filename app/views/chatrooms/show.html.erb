@@ -20,27 +20,12 @@
     <div class='msg'>
       <div id="messages" class="overflow-auto" data-chatroom-id="<%= @chatroom.id %>">
         <% @chatroom.messages.each do |message| %>
-          <div class="message">
-            <div class="message-container" id="message-<%= message.id %>">
-              <%# <i class="author tooltip"> %>
-                <%# <span><%= message.user.profile.nickname %></span>
-                <%# <small><%= message.created_at.strftime("%e/%m/%Y - %T") %></small>
-              <%# </i> %>
-              <% if message.user.profile.photo.attached? %>
-                <%= cl_image_tag message.user.profile.photo.key, class: "avatar" %>
-              <% else %>
-                <%= image_tag "avatar-placeholder.gif", class: "avatar" %>
-              <% end %>
-              <b><%= message.user.profile.nickname %>: &nbsp</b>
-              <% if message.content.include? "http://" or message.content.include? "https://" %>
-                <a href="<%=message.content%>" target="_blank"> <%=message.content%> </a>
-              <% else %>
-                <p><%= message.content %></p>
-              <% end %>
-            </div>
-          </div>
+          <% if message.user.id == current_user.id %>
+            <%= render 'messages/sender', message: message %>
+          <% else %>
+            <%= render 'messages/receiver', message: message%>
+          <% end %>
         <% end %>
-        <div id="anchor"></div>
       </div>
       <div>
         <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>

@@ -11,9 +11,9 @@
     <% end %>
     <b><%= message.user.profile.nickname %>: &nbsp</b>
     <% if message.content.include? "http://" or message.content.include? "https://" %>
-      <a href="<%=message.content%>" target="_blank"> <%=message.content%> </a>
+      <a class= 'message-content' href="<%=message.content%>" target="_blank"> <%=message.content%> </a>
     <% else %>
-      <p><%= message.content %></p>
+      <p class= 'message-content'><%= message.content %></p>
     <% end %>
 </div>
 </div>

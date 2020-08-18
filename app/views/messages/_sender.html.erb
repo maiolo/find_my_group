@@ -1,0 +1,20 @@
+<div class="message-self" id="message-<%= message.id %>">
+  <%# <i class="author tooltip"> %>
+    <%# <span><%= message.user.profile.nickname %></span>
+    <%# <small><%= message.created_at.strftime("%e/%m/%Y - %T") %></small>
+  <%# </i> %>
+  <div class = "sender">
+    <% if message.user.profile.photo.attached? %>
+      <%= cl_image_tag message.user.profile.photo.key, class: "avatar" %>
+    <% else %>
+      <%= image_tag "avatar-placeholder.gif", class: "avatar" %>
+    <% end %>
+    <em><%= message.user.profile.nickname %></em>
+  </div>
+  <% if message.content.include? "http://" or message.content.include? "https://" %>
+    <a class= 'message-content' href="<%=message.content%>" target="_blank"> <%=message.content%> </a>
+  <% else %>
+    <p class= 'message-content'><%= message.content %></p>
+  <% end %>
+  
+</div>

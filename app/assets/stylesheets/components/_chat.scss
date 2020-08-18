@@ -1,6 +1,6 @@
 .chat-container{
   display: flex;
-  width: 100%;
+  width: auto;
 }
 
 .chat-participants {
@@ -26,7 +26,10 @@
   border: solid 1px;
   margin-top: 20px;
   height: 32.6em;
-}
+  @media (max-width: 840px) {
+    width: 70%;
+  }
+} 
 
 .new-message{
   border-bottom: solid 1px;
@@ -34,6 +37,14 @@
 
 #messages {
   overflow-anchor: none;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.message-content {
+  overflow-wrap: anywhere;
+  align-self: flex-end;
+  padding: 0px 8px;
 }
 
 .overflow-auto {
@@ -44,18 +55,15 @@
   margin-left: 1px;
 }
 
-.message-sent{
-  display: flex;
-  flex-flow: row-reverse;
-}
-.message-container{
+.message-they{
   // position: absolute;
+  align-self: flex-start;
   width: fit-content;
   font-size: 16px;
   background-color: lightgray;
   display: flex;
   padding: 3px 1em;
-  margin: 16px;
+  margin: 5px;
   border-radius: 50px;
   .avatar {
     margin-right: 1em;
@@ -65,8 +73,15 @@
   }
 }
 
+.sender { 
+  font-size: xx-small;
+  display: grid;
+  text-align: center;
+}
+
 .message-self{
-  // position: absolute;
+  //position: absolute;
+  align-self: flex-end;
   flex-flow: row-reverse;
   width: fit-content;
   font-size: 16px;
@@ -79,9 +94,4 @@
   .avatar {
     margin-left: 1em;
   }
-}
-
-#anchor {
-  overflow-anchor: auto;
-  height: 1px;
 }
